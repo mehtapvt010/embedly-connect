@@ -88,11 +88,21 @@ class FeedbackWidget extends HTMLElement {
             timestamp: new Date().toISOString(),
         };
 
-        console.log('[EmbedlyConnect] Feedback submitted:', feedbackData);
-
-        // TODO: Send to backend in Phase 3
-        form.reset();
-        alert('Thank you for your feedback!');
+        fetch('http://localhost:4000/api/feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(feedbackData)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log('[EmbedlyConnect] Server response:', data);
+            alert('Thank you for your feedback!');
+          })
+          .catch(err => {
+            console.error('[EmbedlyConnect] Error submitting feedback:', err);
+            alert('Something went wrong.');
+          });
+          
     }
 }
 
