@@ -93,7 +93,7 @@ class FeedbackWidget extends HTMLElement {
             timestamp: new Date().toISOString(),
         };
 
-        fetch('http://localhost:4000/api/feedback', {
+        fetch('https://embedly-connect.onrender.com/api/feedback', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(feedbackData)
