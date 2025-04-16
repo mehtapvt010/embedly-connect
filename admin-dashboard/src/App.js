@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import FeedbackTable from './components/FeedbackTable';
 import { fetchFeedbacks } from './services/api';
+import Login from './pages/Login.jsx';
 
 const App = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -10,8 +11,14 @@ const App = () => {
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [loading, setLoading] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -44,15 +51,25 @@ const App = () => {
     setCurrentPage(1);
   };
 
+  if (!isLoggedIn) {
+    return <Login onLogin={() => setIsLoggedIn(true)} />;
+  }
+
   return (
     <div className={`${darkMode ? 'dark' : ''}`}> 
       <div className="max-w-6xl mx-auto p-6 dark:bg-gray-900 dark:text-white min-h-screen transition-colors">
-        <div className="flex justify-end mb-4">
+        <div className="flex justify-between mb-4">
           <button
             onClick={toggleDarkMode}
             className="text-sm px-4 py-2 bg-gray-300 dark:bg-gray-700 text-black dark:text-white rounded-md"
           >
             Toggle {darkMode ? 'Light' : 'Dark'} Mode
+          </button>
+          <button
+            onClick={handleLogout}
+            className="text-sm px-4 py-2 bg-red-500 text-white rounded-md"
+          >
+            Logout
           </button>
         </div>
 
