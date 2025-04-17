@@ -1,23 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Embedly Connect Widget Demo</title>
+  <meta charset="UTF-8" />
+  <title>Embedly Connect – Feedback Widget Demo</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
       padding: 2rem;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .box {
+      background: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+    code {
+      background: #f1f1f1;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
     }
   </style>
 </head>
 <body>
-  <h1>🧩 Embedly Connect – Feedback Widget Demo</h1>
-  <p>This is a live preview of the embeddable widget running independently:</p>
+  <div class="container">
+    <h1>🎯 Embedly Connect – Feedback Widget</h1>
+    <div class="box">
+      <p>This widget allows users to submit feedback linked to a specific <code>clientId</code>.</p>
+      <p><strong>Try it below 👇</strong></p>
+      <script src="./widget.js"></script>
+      <feedback-widget client-id="demo123"></feedback-widget>
+    </div>
 
-  <!-- Load the widget script -->
-  <script src="./widget.js"></script>
-
-  <!-- Mount the actual widget -->
-  <feedback-widget client-id="demo123"></feedback-widget>
+    <div class="box">
+      <h3>📎 How to Embed This:</h3>
+      <p>Copy and paste this into any website:</p>
+      <pre>
+&lt;script src="https://embedly-connect-widget.vercel.app/widget.js"&gt;&lt;/script&gt;
+&lt;feedback-widget client-id="demo123"&gt;&lt;/feedback-widget&gt;
+      </pre>
+    </div>
+  </div>
 </body>
 </html>
