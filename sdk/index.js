@@ -1,5 +1,9 @@
 import { FeedbackWidget } from './FeedbackWidget.js';
 
+if (!customElements.get('feedback-widget')) {
+  customElements.define('feedback-widget', FeedbackWidget);
+}
+
 (function(window, document){
     const EmbedlyConnect={
         init: function(options={}){
@@ -7,10 +11,6 @@ import { FeedbackWidget } from './FeedbackWidget.js';
                 console.error("EmbedlyConnect: clientId is required");
                 return;
             }
-
-            if (!customElements.get('feedback-widget')) {
-                customElements.define('feedback-widget', FeedbackWidget);
-              }
         
               const widget = document.createElement('feedback-widget');
               widget.setAttribute('client-id', options.clientId);

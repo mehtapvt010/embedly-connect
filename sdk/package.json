@@ -1,11 +1,17 @@
 {
   "name": "embedly-connect",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "submit feedback to a specific clientId using this widget",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Shivang Mehta",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": ["feedback", "widget", "web-component", "sdk", "clientId"],
+  "exports": {
+    ".": {
+      "import": "./index.js"
+    }
+  }
 }

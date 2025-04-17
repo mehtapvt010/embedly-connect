@@ -1,0 +1,5 @@
+# Prevent these files from being published
+node_modules/
+*.log
+index.html
+demo/
